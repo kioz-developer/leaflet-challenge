@@ -1,4 +1,7 @@
-d3.json("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2021-05-20&endtime=2021-05-27").then(function (earthquakeData) {
+var usaMap;
+var coordinates = [];
+
+d3.json("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2021-05-26&endtime=2021-05-27").then(function (earthquakeData) {
     createMap(earthquakeData);
 });
 
@@ -10,7 +13,7 @@ function createMap(earthquakeData) {
     });
 
     // Making a map
-    var usaMap = L.map("map", {
+    usaMap = L.map("map", {
         center: [
             37.09, -95.71
         ],
@@ -27,9 +30,13 @@ function createMap(earthquakeData) {
         id: "mapbox/streets-v11",
         accessToken: API_KEY
     }).addTo(usaMap);
+
 }
 
 function onEachFeature(feature, layer) {
     layer.bindPopup("<h3>" + feature.properties.place +
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
+    //console.log(feature.geometry);
+
+    coordinates.push(feature.geometry.coordinates);
 }
