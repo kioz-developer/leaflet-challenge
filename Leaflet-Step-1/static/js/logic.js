@@ -1,5 +1,6 @@
 var usaMap;
 var coordinates = [];
+var magnitudes = [];
 
 d3.json("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2021-05-26&endtime=2021-05-27").then(function (earthquakeData) {
     createMap(earthquakeData);
@@ -36,7 +37,8 @@ function createMap(earthquakeData) {
 function onEachFeature(feature, layer) {
     layer.bindPopup("<h3>" + feature.properties.place +
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
-    //console.log(feature.geometry);
+    //console.log(feature.properties.mag);
 
     coordinates.push(feature.geometry.coordinates);
+    magnitudes.push(feature.properties.mag);
 }
