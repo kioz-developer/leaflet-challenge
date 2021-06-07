@@ -8,3 +8,43 @@ body,
 html {
   height: 100%;
 }
+
+.legend {
+  padding: 6px 8px;
+  font: 12px Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #555;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.legend ul {
+  list-style-type: none;
+}
+
+.legend li {
+  display: block;
+  width: 75px;
+  height: 22px;
+}
+
+.legend span {
+  display: block;
+  float: left;
+  margin-right: 5px;
+  width: 30px;
+  height: 22px;
+}
+
+.leg-text {
+  width: 45px !important;
+  height: 18px !important;
+  margin-top: 4px;
+}
+
+.legend p {
+  clear: both !important;
+  margin-top: 0px
+}
